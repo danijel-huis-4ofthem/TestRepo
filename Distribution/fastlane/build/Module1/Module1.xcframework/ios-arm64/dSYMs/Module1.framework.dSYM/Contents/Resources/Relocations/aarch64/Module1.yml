@@ -1,0 +1,13 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/danijelhuis/Library/Developer/Xcode/DerivedData/Test-gpnygnchbslkricdwzozsjylglcf/Build/Intermediates.noindex/ArchiveIntermediates/Module1/InstallationBuildProductsLocation/Library/Frameworks/Module1.framework/Module1'
+relocations:
+  - { offset: 0x32472, size: 0x8, addend: 0x0, symName: _Module1VersionString, symObjAddr: 0x0, symBinAddr: 0x4FF0, symSize: 0x0 }
+  - { offset: 0x324A6, size: 0x8, addend: 0x0, symName: _Module1VersionNumber, symObjAddr: 0x28, symBinAddr: 0x5018, symSize: 0x0 }
+  - { offset: 0x324E2, size: 0x8, addend: 0x0, symName: '_$s7Module10A7ManagerC5debugyyFZ', symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0x94 }
+  - { offset: 0x32585, size: 0x8, addend: 0x0, symName: ___swift_instantiateConcreteTypeFromMangledName, symObjAddr: 0x94, symBinAddr: 0x4094, symSize: 0x40 }
+  - { offset: 0x32598, size: 0x8, addend: 0x0, symName: '_$s7Module10A7ManagerCMa', symObjAddr: 0xEC, symBinAddr: 0x40EC, symSize: 0x20 }
+  - { offset: 0x325C4, size: 0x8, addend: 0x0, symName: '_$s7Module10A7ManagerC5debugyyFZ', symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0x94 }
+  - { offset: 0x32646, size: 0x8, addend: 0x0, symName: '_$s7Module10A7ManagerCfd', symObjAddr: 0xD4, symBinAddr: 0x40D4, symSize: 0x8 }
+  - { offset: 0x3266B, size: 0x8, addend: 0x0, symName: '_$s7Module10A7ManagerCfD', symObjAddr: 0xDC, symBinAddr: 0x40DC, symSize: 0x10 }
+...
