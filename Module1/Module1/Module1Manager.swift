@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import Core
 
 public final class Module1Manager {
     public static func debug() {
         print("Hello from Module1Manager!")
+        CoreManager.debug()
     }
 }
