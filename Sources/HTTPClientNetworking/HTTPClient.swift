@@ -7,6 +7,11 @@
 
 import Foundation
 
+public class HTTPClientDebugManager {
+    public static var debugText: String = ""
+    public static let identifier = Int.random(in: 0..<10000)
+}
+
 /// Networking abstraction.
 public protocol HTTPClient: HTTPRequestBuilder, HTTPRequestService, Sendable {
     func authorizeRequest(_ request: URLRequest) async throws -> URLRequest

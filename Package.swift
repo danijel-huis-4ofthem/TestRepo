@@ -8,6 +8,7 @@ let package = Package(
     products: [
         .library(
             name: "HTTPClientNetworking",
+            type: .static,
             targets: ["HTTPClientNetworking"]),
     ],
     targets: [
