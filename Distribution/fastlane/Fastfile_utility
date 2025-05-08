@@ -1,0 +1,119 @@
+default_platform(:ios)
+platform :ios do
+
+  # Commits and pushes all changes.
+  def git_commit_and_push(message:)
+    sh("git add -A && 
+        git commit -m '#{message}' && 
+        git push")
+  end
+
+  # Creates new tag and pushes it.
+  def git_create_tag_and_push(tag) 
+    sh("git tag -a #{tag} -m 'Creating tag #{tag}' &&
+        git push origin tag #{tag}")
+  end
+
+  # Opens file, calls block with file content and saves modified file content after block.
+  def process_file(input_path, output_path)
+    # Read file content from input_path
+    file_content = File.read(input_path)
+    # Perform block operation on the file content
+    modified_content = yield(file_content) if block_given?
+    # Save the modified content to output_path
+    File.write(output_path, modified_content)
+  end
+
+  # Validates semantic version. It will throw errro if:
+  # - is_mandatory is true and version is nil or empty.
+  # - version is provided but not in given format (even if is_mandatory is false).
+  # Otherwise it will just return.
+  def validate_semantic_version(version, is_mandatory:)
+    if version.nil? || version.empty?
+      if is_mandatory
+        raise "Semantic version must be provided." 
+      else
+        return
+      end
+    end
+
+    # Check if version matches the semantic versioning pattern "x.y.z"
+    if version.match?(/^\d+\.\d+\.\d+$/)
+      UI.message "Version is valid: #{version}"
+    else
+      raise "Invalid version format. Expected format is x.y.z. Given '#{version}'"
+    end
+  end
+
+  # Accepts semantic version (x.y.z) as input and increments patch version.
+  def increment_semantic_patch_version(version)
+    # Validate
+    validate_semantic_version(version, is_mandatory: true)
+
+    # Increment
+    major, minor, patch = version.split('.').map(&:to_i)
+    "#{major}.#{minor}.#{patch + 1}"
+  end
+
+  # Checks if GitHub CLI is installed and user has push permissions to the given repo. This can be called from any folder.
+  def check_github(owner:, repo:)
+    # Check if GitHub CLI is installed
+    unless system("command -v gh > /dev/null")
+      raise "GitHub CLI (gh) is not installed. Please install it before proceeding ('brew install gh')."
+    end
+
+    message = "Please make sure you are logged in to GitHub CLI. To login pass your GitHub token as GH_TOKEN environment variable or login with GitHub CLI (gh auth login). You will need token with following permissions:\nadmin:public_key, read:org, repo, user, workflow, write:discussion"
+    # Check if user is logged in and it has push permissions to the repo.
+    begin
+      result = sh("gh api -X GET /repos/#{owner}/#{repo} | jq -r '.permissions.push'")
+      unless result.strip == "true"
+        raise "You do not have write permissions to GitHub release repo #{owner}/#{repo}. #{message}"
+      end
+    rescue => error
+      raise "Failed to verify permissions to GitHub release repo #{owner}/#{repo}.\n\n#{message}\nDetailed error: #{error}"
+    end
+  end
+
+  desc "Posts message to Slack. Environment variables:"
+  desc "SLACK_URL: Slack incoming webhook (required)."
+  desc "SLACK_BUILD_URL: Web url to CI build, used in a button. (optional)."
+  desc "SLACK_RELEASE_REPO_URL: Web url to release repo, used in a button. (optional)."
+  desc "- message: Message to post."
+  def post_to_slack(message:, attachment_text:)
+    if !ENV["SLACK_URL"]
+      UI.error("Warning: Failed to post message to slack because SLACK_URL environemnt var is not set. Message is #{message}.") 
+      return
+    end 
+
+    actions = []
+
+    if ENV["SLACK_BUILD_URL"] 
+      actions.push({
+        name: "App",
+        text: "View build",
+        type: "button",
+        url: ENV["SLACK_BUILD_URL"] 
+      })
+    end
+
+    if ENV["SLACK_RELEASE_REPO_URL"] 
+      actions.push({
+        name: "App",
+        text: "View repo",
+        type: "button",
+        url: ENV["SLACK_RELEASE_REPO_URL"] 
+      })
+    end
+
+    # slack action implicitly uses SLACK_URL environment variable as destination.
+    slack(
+      message: message, 
+      fail_on_error: false,
+      default_payloads: [], 
+      attachment_properties: {
+        title: message,
+        text: attachment_text,
+        actions: actions
+      })
+  end
+end
