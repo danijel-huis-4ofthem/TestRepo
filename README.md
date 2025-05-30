@@ -91,6 +91,7 @@ To skip certain steps, see [Prerequisites](./docs/prerequisites.md).
 Each feature has its own documentation:
 
 # Example
+This is full code for example app that has **Search** feature on one tab and **Cart** feature on another. These two features will internally communicate, e.g. when you add some product from search or any other screen, it will be added to cart.
 
 ```swift
 import SwiftUI
