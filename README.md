@@ -22,7 +22,7 @@ To add the IA SDK to your Xcode project, follow these steps:
 3.  Specify the version you want to use and click **Add Package**. We recommend selecting **Exact Version** at this time.  
     ![](docs/resources/installation_1.png)
     
-4.  Choose the package products you need, assign them to your app target, and click **Add Package**. In the example below, `IAOverTheCounter` and `IAOrdering` are selected because we want search and cart features in our example app. `IACore` is always needed and `IAIntegrations` is needed to handle prerequisites.
+4.  Choose the package products you need, assign them to your app target, and click **Add Package**. In the example below, `IAOverTheCounter` and `IAOrdering` are selected because we want **Search** and **Cart** features in our example app. `IACore` is always needed and `IAIntegrations` is needed to handle prerequisites.
     
     > ⚠️ Make sure your API key includes all the products you select.
 
