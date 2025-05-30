@@ -39,7 +39,7 @@ import IAOrdering
 
 ```
 
-3.  At starting point in your app you need to call IASDK.setup and pass your API key. Make sure that API key matches your bundle ID.
+2.  At starting point in your app you need to call IASDK.setup and pass your API key. Make sure that API key matches your bundle ID.
     
 
 ```swift
