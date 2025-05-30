@@ -4,7 +4,7 @@ Contains features related to search and products:
 
 *   **Search screen**: Search bar with list of products, allows filtering and sorting.
     
-*   **Product details**: Displays details of selected product.
+*   **Product details**: Displays details of a selected product.
     
 *   **Product inquiry**: Enables user to send E-Mail to pharmacies and inquiry about the product.
     
