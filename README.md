@@ -84,7 +84,7 @@ This will present a screen consisting of three steps:
     *   If you’re using the IAPharmacy product, allow users to search for pharmacies via the **Pharmacy Finder** feature. You will have to call `IAPharmacySDK.setup()` in your SDK setup.
         
 
-To skip certain steps, see [Prerequisites](./docs/prerequisites.md).
+To skip certain steps, see [Prerequisites](./docs/Prerequisites.md).
 
 # Features
 
