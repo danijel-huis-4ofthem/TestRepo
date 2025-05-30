@@ -92,7 +92,7 @@ To skip certain steps, see [Prerequisites](./docs/prerequisites.md).
 
 [IAOverTheCounter](./docs/IAOverTheCounter.md)  
 
-[IAOrdering](./docs/IAOverTheCounter.md)  
+[IAOrdering](./docs/IAOrdering.md)  
 
 [Style Configuration](./docs/StyleConfiguration.md)  
 
