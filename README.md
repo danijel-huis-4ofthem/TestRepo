@@ -64,7 +64,7 @@ To add the IA SDK to your Xcode project, follow these steps:
 
 # Prerequisites
 
-Before using any features or displaying them on screen, make sure the following conditions are met. Call the following line of code once your UI is ready:
+Before using any SDK features, you must ensure that required conditions are met. Call the following line once your UI is ready:
 
 ```swift
 try await IAIntegrationsSDK.Prerequisites.runPrerequisites(isAnimated: false)
