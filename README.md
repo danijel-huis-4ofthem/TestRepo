@@ -108,10 +108,10 @@ struct OverTheCounterExampleApp: App {
         WindowGroup {
             TabView {   
                 if isLoaded {
-                    MainProductSearchScreen()
+                    IAProductSearchScreen()
                         .tabItem { Text("Search") }
                     
-                    MainCartNavigationScreen()
+                    IACartScreen()
                         .tabItem { Text("Cart") }
                 }
             }
