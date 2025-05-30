@@ -1,6 +1,6 @@
 # IAOrdering
 
-This product contains features related to cart, checkout, payment and thank you page.
+Contains features related to cart, checkout, payment and thank you page:
 
 *   **Empty cart screen:** When cart is empty it shows recommended products and products of the month. It allows user to add products and prescriptions.
     
