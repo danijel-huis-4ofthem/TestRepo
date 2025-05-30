@@ -2,7 +2,7 @@
 
 *   iOS 15
     
-*   SDK key
+*   API key
     
 
 # API Key
