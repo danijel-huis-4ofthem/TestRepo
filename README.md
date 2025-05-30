@@ -15,48 +15,53 @@ In order to use IA SDK you will need API key with proper entitlements. Your API 
 
 To add the IA SDK to your Xcode project, follow these steps:
 
-1.  Open your Xcode `project` (or `workspace`), then go to **File > Add Package Dependencies**…
+1.  Open your Xcode `project` or `workspace`, then go to **File > Add Package Dependencies**…
     
-2.  Enter [https://github.com/ihreapotheken/IA-SDK-iOS](https://github.com/ihreapotheken/IA-SDK-iOS) into **Search or Enter Package URL** field.
+2.  In the **Search or Enter Package URL** field, enter [https://github.com/ihreapotheken/IA-SDK-iOS](https://github.com/ihreapotheken/IA-SDK-iOS).
     
-3.  Specify a version and click **Add Package**. At this moment we recommend to specify **Exact Version**.  
+3.  Specify the version you want to use and click **Add Package**. We recommend selecting **Exact Version** at this time.  
     ![](docs/resources/installation_1.png)
     
-4.  Now choose package products that you need, assign them to your target and click **Add Package**. In example below we are choosing `IAOverTheCounter` and `IAOrdering`. Note that your API key will need to include all products that you choose.  
+4.  Choose the package products you need, assign them to your app target, and click **Add Package**. In the example below, `IAOverTheCounter` and `IAOrdering` are selected because we want search and cart features in our example app. `IACore` is always needed and `IAIntegrations` is needed to handle prerequisites.
+    
+    > ⚠️ Make sure your API key includes all the products you select.
+
     ![](docs/resources/installation_2.png)
     
 
 # Initial setup and configuration
+1. **Import the required products**  
+   In this example, we are adding **Search** and **Cart** to our app, so we need to import the following modules:
 
-1.  First import your products, in this example we will be adding search and cart to our app, we need to import following products:
-    
+   ```swift
+   import IACore
+   import IAIntegrations
+   import IAOverTheCounter
+   import IAOrdering
+   ```
 
-```swift
-import IACore
-import IAIntegrations
-import IAOverTheCounter
-import IAOrdering
+2. **Initialize the SDK**  
+   At the starting point of your app (e.g., in `AppDelegate`, `SceneDelegate`, or `@main`), call `IASDK.setup` and provide your API key.  
+   > ⚠️ Ensure the API key matches your app’s bundle ID.
 
-```
+   ```swift
+   try await IASDK.setup(
+       apiKey: "YOUR_API_KEY_HERE",
+       loadRemoteConfiguration: false
+   )
+   ```
 
-2.  At starting point in your app you need to call IASDK.setup and pass your API key. Make sure that API key matches your bundle ID.
-    
+3. **Set up the product SDKs**  
+   Next, call the `setup()` method for each product you plan to use.  
+   This step is required because products can be interconnected.  
+   For example, calling `IAOrderingSDK.setup()` makes the **Cart** feature (from `IAOrdering`) internally available to the **Search** feature (from `IAOverTheCounter`), enabling features like a cart button on the search screen.
 
-```swift
-try await IASDK.setup(
-    apiKey: "YOUR_API_KEY_HERE", 
-    loadRemoteConfiguration: false
-)
+   You can call these immediately after `IASDK.setup`:
 
-```
-
-4.  Next, call the setup method for each product you plan to use. This is needed because, for example, calling `IAOrderingSDK.setup` makes the `Cart` feature (defined in `IAOrdering`) internally available to the `Search` feature (defined in `IAOverTheCounter`), allowing a cart button to appear on the search screen. You can call these right after your `IASDK.setup` call. Full code.
-    
-
-```swift
- try await IAOverTheCounterSDK.setup()
- try await IAOrderingSDK.setup()
-```
+   ```swift
+   try await IAOverTheCounterSDK.setup()
+   try await IAOrderingSDK.setup()
+   ```
 
 # Prerequisites
 
