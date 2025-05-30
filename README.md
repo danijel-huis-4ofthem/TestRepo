@@ -52,8 +52,7 @@ To add the IA SDK to your Xcode project, follow these steps:
    ```
 
 3. **Set up the product SDKs**  
-   Next, call the `setup()` method for each product you plan to use.  
-   This step is required because products can be interconnected.  
+   Next, call the `setup()` method for each product you plan to use. This step is required because products can be interconnected.  
    For example, calling `IAOrderingSDK.setup()` makes the **Cart** feature (from `IAOrdering`) internally available to the **Search** feature (from `IAOverTheCounter`), enabling features like a cart button on the search screen.
 
    You can call these immediately after `IASDK.setup`:
