@@ -1,6 +1,6 @@
-# Minimum requirements
+# Requirements
 
-*   iOS 15
+*   iOS 15 or above
     
 *   API key
     
