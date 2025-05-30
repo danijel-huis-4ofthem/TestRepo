@@ -41,7 +41,7 @@ To add the IA SDK to your Xcode project, follow these steps:
    ```
 
 2. **Initialize the SDK**  
-   At the starting point of your app (e.g., in `AppDelegate`, `SceneDelegate`, or `@main`), call `IASDK.setup` and provide your API key.  
+   At the starting point of your app, call `IASDK.setup` and provide your API key.  
    > ⚠️ Ensure the API key matches your app’s bundle ID.
 
    ```swift
