@@ -82,18 +82,6 @@ This will present a screen consisting of three steps:
 
 To skip certain steps, see [Prerequisites](./docs/prerequisites.md).
 
-```swift
-// Marks the legal step as completed so it won't be shown again.
-IAIntegrationsSDK.Prerequisites.setIsLegalDisclaimerShown(true)
-
-// Marks the onboarding step as completed so it won't be shown again.
-IAIntegrationsSDK.Prerequisites.setIsOnboardingShown(true)
-
-// Manually sets the pharmacy ID. Pass `nil` to clear it.
-IASDK.Pharmacy.setPharmacyID(12345)
-
-```
-
 # Implementing features
 
 Each feature has its own documentation:
