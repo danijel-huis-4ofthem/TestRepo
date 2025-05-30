@@ -31,7 +31,7 @@ To add the IA SDK to your Xcode project, follow these steps:
 
 # Initial setup and configuration
 1. **Import the required products**  
-`IAOverTheCounter` and `IAOrdering` are selected because we want **Search** and **Cart** features in our example app. `IACore` is always needed and `IAIntegrations` is needed to handle prerequisites.
+`IAOverTheCounter` is selected because we want **Search** feature in our example app. `IAOrdering` is selected because we want **Cart** feature. `IACore` is always needed. `IAIntegrations` is needed to handle prerequisites.
 
    ```swift
    import IACore
