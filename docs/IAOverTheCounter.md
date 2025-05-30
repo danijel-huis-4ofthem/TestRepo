@@ -1,14 +1,14 @@
 # IAOverTheCounter
 
-This product contains features related to search and products. List of features:
+Contains features related to search and products:
 
-*   Search screen: Search bar with list of products, allows filtering and sorting.
+*   **Search screen**: Search bar with list of products, allows filtering and sorting.
     
-*   Product details: Displays details of selected product.
+*   **Product details**: Displays details of selected product.
     
-*   Product inquiry: Enables user to send E-Mail to pharmacies and inquiry about the product.
+*   **Product inquiry**: Enables user to send E-Mail to pharmacies and inquiry about the product.
     
-*   Cart integration: Cart is integrated into list and details if `IAOrdering` module is setup.
+*   **Cart integration**: Cart is integrated into list and details if `IAOrdering` module is setup.
     
 
 # Product Search
